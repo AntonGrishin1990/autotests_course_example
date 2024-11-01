@@ -19,18 +19,18 @@
 
 
 def everything_for_your_cat(cats_data):
+    """
+    Формируем строку с информацией о владельцах и всех их питомцах
+    :param cats_data: - список кортежей с информацией о кличке и возрасте питомцев и ФИ владельцев
+    :return our_str: - строка из имени владельца и всех его питомцев
+    """
     dictionary = {}
     our_str = ""
-    for nickname, age, firstname, lastname in cats_data:
-        fullname = f'{firstname} {lastname}'
-        cat = f'{nickname}, {age}'
-        if fullname not in dictionary:
-            dictionary[fullname] = []
-        dictionary[fullname].append(cat)
-    output = []
-    for owner, animal in dictionary.items():
-        output.append(f"{owner}: " + "; ".join(animal))
-    our_str = "\n".join(output)
+    for order in cats_data:
+        pet_info = order[0] + ', ' + str(order[1])
+        dictionary.setdefault(order[2:], []).append(pet_info)
+    for owner, pet in dictionary.items():
+        our_str += ' '.join(owner) + ': ' + '; '.join(pet) + '\n'
     return our_str
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ

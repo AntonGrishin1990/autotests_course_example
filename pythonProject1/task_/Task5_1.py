@@ -6,6 +6,11 @@
 # 'letter' --> {'l': 1, 'e': 2, 't': 2, 'r': 1}
 
 def letter_stat(our_str):
+    """
+   Вычисляет количество вхождений каждой буквы в строку
+   :param our_str: строка, в которой считаем буквы
+   :return letters_dict: словарь: ключ - буква, значение - количество вхождений
+   """
     letters_dict = {}
     for i in our_str:
         letters_dict[i] = our_str.count(i)
